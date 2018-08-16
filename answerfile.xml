@@ -1,5 +1,5 @@
 <installation mode="upgrade">
 <existing-installation>sda</existing-installation>
-<source type="url">http://10.12.5.100/upgrade/os/</source>
-<post-install-script type="url">http://10.12.5.100/upgrade/updates/post_install.sh</post-install-script>
+<source type="url">http://##IP##/upgrade/os/</source>
+<post-install-script type="url">http://##IP##/upgrade/updates/post_install.sh</post-install-script>
 </installation>

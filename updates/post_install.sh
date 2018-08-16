@@ -15,7 +15,7 @@ function fix_hostname
 
 fix_hostname
 
-server_ip=10.12.5.100
+server_ip=##IPP##
 first_boot_script_after_upgrade=root/first-boot-after-upgrade.sh
 wget http://${server_ip}/upgrade/updates/hotfix.sh  -O ${first_boot_script_after_upgrade}
 chmod 777 ${first_boot_script_after_upgrade}
@@ -25,7 +25,7 @@ cat > ${post_install_service} <<EOF
 After=xapi.service
 
 [Service]
-ExecStart=/${first_boot_script_after_upgrade} ${server_ip}
+ExecStart=/${first_boot_script_after_upgrade}
 
 [Install]
 WantedBy=multi-user.target

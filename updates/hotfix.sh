@@ -3,7 +3,7 @@
 /opt/xensource/bin/xapi-wait-init-complete 180
 #xe host-apply-edition edition=enterprise-per-socket license-server-address=10.12.246.11 license-server-port=27000
 
-server_ip=$1
+server_ip=##IP##
 hotfix_dir=/tmp/ihotfix
 mkdir -p ${hotfix_dir}
 cd ${hotfix_dif}

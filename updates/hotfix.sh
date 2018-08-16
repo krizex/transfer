@@ -1,6 +1,13 @@
 #!/bin/sh
 
-/opt/xensource/bin/xapi-wait-init-complete 180
+
+logger -t "hotfix" "Waiting xapi to be init completed..."
+if /opt/xensource/bin/xapi-wait-init-complete 300; then
+    logger -t "hotfix" "xapi inited"
+else
+    logger -t "hotfix" "Error: xapi still not ready, won't install hotfixes"
+    exit 1
+fi
 #xe host-apply-edition edition=enterprise-per-socket license-server-address=10.12.246.11 license-server-port=27000
 
 server_ip=##IP##

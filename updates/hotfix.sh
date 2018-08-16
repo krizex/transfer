@@ -12,7 +12,7 @@ fi
 server_ip=##IP##
 hotfix_dir=/tmp/ihotfix
 mkdir -p ${hotfix_dir}
-cd ${hotfix_dif}
+cd ${hotfix_dir}
 
 host_uuid=`cat /etc/xensource-inventory | grep INSTALLATION_UUID | cut -d"'" -f2`
 wget "http://${server_ip}/upgrade/updates/updates.list"

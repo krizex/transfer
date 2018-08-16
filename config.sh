@@ -6,6 +6,8 @@ if [ "x$IP" == "x" ];then
     exit 1
 fi
 
+echo "Configuring IP address in scripts:"
+
 FILES="answerfile.xml updates/hotfix.sh updates/post_install.sh"
 
 for f in $FILES

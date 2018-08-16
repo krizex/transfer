@@ -27,6 +27,6 @@ do
 done
 
 logger -t "hotfix" "All hotfixes applied, remove the postinstall.service"
-/usr/bin/rm -f /etc/systemd/system/multi-user.target.wants/postinstall.service
+rm -f /etc/systemd/system/multi-user.target.wants/postinstall.service
 
 date > /root/hotfix-script-executed

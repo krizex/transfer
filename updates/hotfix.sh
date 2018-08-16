@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 logger -t "hotfix" "Waiting xapi to be init completed..."
 if /opt/xensource/bin/xapi-wait-init-complete 300; then
     logger -t "hotfix" "xapi inited"
@@ -29,3 +28,5 @@ done
 
 logger -t "hotfix" "All hotfixes applied, remove the postinstall.service"
 /usr/bin/rm -f /etc/systemd/system/multi-user.target.wants/postinstall.service
+
+date > /root/hotfix-script-executed

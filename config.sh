@@ -10,6 +10,8 @@ FILES="answerfile.xml updates/hotfix.sh updates/post_install.sh"
 
 for f in $FILES
 do
+    echo "=== changes of $f ==="
+    sed -n -e "s/##IP##/${IP}/gp" $f
     sed -i "s/##IP##/${IP}/g" $f
 done
 

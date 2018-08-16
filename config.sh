@@ -14,5 +14,3 @@ do
     sed -n -e "s/##IP##/${IP}/gp" $f
     sed -i "s/##IP##/${IP}/g" $f
 done
-
-echo "Done"

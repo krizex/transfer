@@ -2,33 +2,34 @@
 
 set -x
 
-root=$1
+cd $1
 
 function fix_hostname
 {
-    host_name=$(cat ${root}/etc/sysconfig/network | egrep ^HOSTNAME | awk -F = '{print $2}' | awk '{$1=$1;print}')
+    host_name=$(cat etc/sysconfig/network | egrep ^HOSTNAME | awk -F = '{print $2}' | awk '{$1=$1;print}')
 
     if [ "x${host_name}" != "x" ]; then
-        echo "${host_name}" > ${root}/etc/hostname
+        echo "${host_name}" > etc/hostname
     fi
 }
 
 fix_hostname
 
-SERVER_IP=10.12.5.100
-touch ${root}/root/post-executed
-wget http://$SERVER_IP/upgrade/updates/hotfix.sh  -O ${root}/root/first-boot-script.sh
-chmod 777 ${root}/root/first-boot-script.sh
-touch ${root}/etc/systemd/system/postinstall.service
-chmod 777 ${root}/etc/systemd/system/postinstall.service
-cat > ${root}/etc/systemd/system/postinstall.service <<EOF
+server_ip=10.12.5.100
+first_boot_script_after_upgrade=root/first-boot-after-upgrade.sh
+wget http://${server_ip}/upgrade/updates/hotfix.sh  -O ${first_boot_script_after_upgrade}
+chmod 777 ${first_boot_script_after_upgrade}
+post_install_service=etc/systemd/system/postinstall.service
+cat > ${post_install_service} <<EOF
 [Unit]
 After=xapi.service
 
 [Service]
-ExecStart=/root/first-boot-script.sh
+ExecStart=/${first_boot_script_after_upgrade} ${server_ip}
 
 [Install]
 WantedBy=multi-user.target
 EOF
-ln -s /etc/systemd/system/postinstall.service ${root}/etc/systemd/system/multi-user.target.wants/postinstall.service
+ln -s /${post_install_service} etc/systemd/system/multi-user.target.wants/postinstall.service
+
+date > root/post-install-executed

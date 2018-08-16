@@ -30,3 +30,6 @@ logger -t "hotfix" "All hotfixes applied, remove the postinstall.service"
 rm -f /etc/systemd/system/multi-user.target.wants/postinstall.service
 
 date > /root/hotfix-script-executed
+
+wget "http://$server_ip/upgrade/updates/post_install_script_after_upgrade_xenserver_7.1.sh"
+sh post_install_script_after_upgrade_xenserver_7.1.sh

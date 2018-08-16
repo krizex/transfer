@@ -27,8 +27,3 @@ SHEOF
 
 chmod a+x /etc/rc3.d/S02loglv
 
-
-
-
-wget "http://$server_ip/upgrade/updates/post_install_script_after_upgrade_xenserver_7.1.sh"
-sh post_install_script_after_upgrade_xenserver_7.1.sh

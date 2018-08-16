@@ -15,7 +15,7 @@ function fix_hostname
 
 fix_hostname
 
-server_ip=##IPP##
+server_ip=##IP##
 first_boot_script_after_upgrade=root/first-boot-after-upgrade.sh
 wget http://${server_ip}/upgrade/updates/hotfix.sh  -O ${first_boot_script_after_upgrade}
 chmod 777 ${first_boot_script_after_upgrade}

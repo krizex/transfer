@@ -34,3 +34,7 @@ do
     sed -n -e "s/##IP##/${IP}/gp" $f
     sed -i "s/##IP##/${IP}/g" $f
 done
+
+echo "+---------------------------------------------------------+"
+echo "|  NOTE: You have to manually update DHCP configuration.  |"
+echo "+---------------------------------------------------------+"

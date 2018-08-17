@@ -1,0 +1,4 @@
+default xenserver-auto
+LABEL xenserver-auto
+kernel mboot.c32
+append xenserver/xen.gz dom0_max_vcpus=4 dom0_mem=4G,max:4G com1=1152000,8n1 console=com1,vga --- xenserver/vmlinuz xencons=hvc console=hvc0 console=tty0 answerfile_device=eth0 answerfile=http://##IP##/upgrade/answerfile.xml install --- xenserver/install.img

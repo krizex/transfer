@@ -28,5 +28,13 @@ do
     cp -f ${file} ${target_f}
 done
 
-cd ${FOLDER}
-./config.sh ${IP}
+echo "Configuring IP address in scripts:"
+
+FILES="${FOLDER}/answerfile.xml ${FOLDER}/updates/hotfix.sh ${FOLDER}/updates/post_install.sh /var/lib/tftpboot/pxelinux.cfg/default"
+
+for f in $FILES
+do
+    echo "=== changes of $f ==="
+    sed -n -e "s/##IP##/${IP}/gp" $f
+    sed -i "s/##IP##/${IP}/g" $f
+done
